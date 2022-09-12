@@ -1,0 +1,21 @@
+<%= link_to space_path(@space), class:'block hover:opacity-80' do %>
+  <div class="card lg:card-side bg-base-100 shadow-xl mb-5">
+    <figure></figure>
+    <div class="card-body">
+      <h2 class="card-title"><%= space.name %></h2>
+      <div class="flex gap=1 items-center">
+        <%# ここにsvgタグで何かする %>
+        <%= space.address %>
+      </div>
+      <div>
+        <%= space.nearest_station %>
+      </div>
+      <div>
+        <%# 別の入力フォーム？ %>
+      </div>
+      <div>
+        <%# featureを追加したら編集する %>
+      </div>
+    </div>
+  </div>
+<% end %>
