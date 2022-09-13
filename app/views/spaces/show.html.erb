@@ -1,0 +1,45 @@
+<div class="container mx-auto px-4 py-10 prose">
+  <div class="text-right">
+    <%= link_to edit_space_path(@space), class: 'btn btn-circle ctn-outline' do %>
+      <svg>
+      </svg>
+    <% end %>
+  </div>
+  <h2><%= @space.name%></h2>
+  <%# ここに評価？を追記 %>
+
+  <div>
+    <%# スペースタイプを表示する %>
+  </div>
+
+  <div>
+    <%# 画像を表示する %>
+  </div>
+
+  <div>
+    <%= simple_format(@space.description)%>
+  </div>
+
+  <hr>
+  <div class="border-solid border p-5 mb-10">
+    <div class="flex gap-1 items-center mb-3">
+      住所
+      <svg>
+      </svg>
+      <%= @space.address %>
+    </div>
+    <div class="flex gap-1 items-center mb-3">
+      最寄駅
+      <svg>
+      </svg>
+      <%= @space.nearest_station %>
+    </div>
+
+    <div>
+      <%# スペースの特徴をここに追加する %>
+    </div>
+  </div>
+  <div>
+    <%# ここに地図情報を表示する。 %>
+  </div>
+</div>
