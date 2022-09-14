@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_070005) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_14_233513) do
+  create_table "features", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_features_on_name", unique: true
+  end
+
   create_table "space_type_mappings", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "space_id", null: false
     t.bigint "space_type_id", null: false
