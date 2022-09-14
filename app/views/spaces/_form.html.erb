@@ -20,7 +20,16 @@
   </div>
   
   <%# スペースタイプ %>
-  <div>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :space_types, class: 'label' %>
+    <div class="flex flex-wrap gap-5">
+      <%= f.collection_check_boxes :space_type_ids, SpaceType.all, :id, :name do |b| %>
+        <%= b.label class: 'label cursor-pointer justify-start gap-3' do %>
+          <%= b.check_box class: 'checkbox checkbox-primary' %>
+          <span class="label-text"><%= b.text %></span>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 
   <%# features %>

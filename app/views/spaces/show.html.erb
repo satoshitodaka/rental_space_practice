@@ -8,8 +8,10 @@
   <h2><%= @space.name%></h2>
   <%# ここに評価？を追記 %>
 
-  <div>
-    <%# スペースタイプを表示する %>
+  <div class="flex flex-wrap gap-3">
+    <% @space.space_types.each do |space_type| %>
+      <span class="py-1 px-2 border-solid border block"><%= space_type.name %></span>
+    <% end %>
   </div>
 
   <div>

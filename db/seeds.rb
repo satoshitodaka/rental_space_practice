@@ -1,3 +1,8 @@
+# space_type
+%w[レンタルスペース 貸し会議室 セミナー会場 パーティールーム コワーキングスペース カフェ].each do |name|
+  SpaceType.create!(name: name)
+end
+
 # space
 100.times.each do |n|
   # ランダムの緯度経度を作成
@@ -22,7 +27,6 @@
   # end
 
   # スペースの特徴についての処理
-
-
-
+  # スペースタイプを指定
+  space.space_type_ids = SpaceType.all.sample(3).pluck(:id)
 end
