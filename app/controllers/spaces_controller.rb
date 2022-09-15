@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
   def index
-    @spaces = Space.all
+    @q = Space.ransack(params[:q])
+    @spaces = @q.result(distinct: true)
   end
 
   def new

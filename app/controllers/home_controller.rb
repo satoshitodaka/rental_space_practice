@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @spaces = Space.all # いったんは全件を取得
+    @q = Space.ransack(params[:q])
   end
 end

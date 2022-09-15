@@ -185,6 +185,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (3.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     redis (4.8.0)
     regexp_parser (2.5.0)
     reline (0.3.1)
@@ -283,6 +287,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.3)
+  ransack
   redis (~> 4.0)
   rspec-rails
   rubocop
