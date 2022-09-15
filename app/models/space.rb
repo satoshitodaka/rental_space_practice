@@ -16,6 +16,8 @@ class Space < ApplicationRecord
 
   has_many :space_type_mappings, dependent: :destroy
   has_many :space_types, through: :space_type_mappings
+  has_many :feature_type_mappings, dependent: :destroy
+  has_many :features, through: :feature_mappings
 
   validates :name, presence: true
   validates :description, presence: true

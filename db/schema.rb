@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_14_233513) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_15_000125) do
+  create_table "feature_mappings", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "space_id", null: false
+    t.bigint "feature_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id", "space_id"], name: "index_feature_mappings_on_feature_id_and_space_id", unique: true
+    t.index ["feature_id"], name: "index_feature_mappings_on_feature_id"
+    t.index ["space_id"], name: "index_feature_mappings_on_space_id"
+  end
+
   create_table "features", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -46,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_14_233513) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "feature_mappings", "features"
+  add_foreign_key "feature_mappings", "spaces"
   add_foreign_key "space_type_mappings", "space_types"
   add_foreign_key "space_type_mappings", "spaces"
 end
