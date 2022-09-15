@@ -27,9 +27,10 @@ end
     longitude: longitude,
   )
 
-  # 3.times.each do |n|
-  #   画像をランダムで取得するようにする
-  # end
+  3.times.each do
+    fixture_image_name = "#{Random.rand(1..10)}.jpg"
+    space.images.attach(io: File.open(Rails.root.join("db/fixtures/spaces/#{fixture_image_name}")), filename: fixture_image_name, content_type: 'image/jpeg')
+  end
 
   # featureを指定
   space.feature_ids = Feature.all.sample(3).pluck(:id)

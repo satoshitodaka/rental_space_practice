@@ -62,6 +62,12 @@
   <p>クリックしてピンを立ててください</p>
   <div></div>
 
+  <%# 画像を選択する %>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :images, class: 'label' %>
+    <%= f.file_field :images, class: '#', multiple: true %>
+  </div>
+
   <%# 送信ボタン %>
   <div class="mt-3">
     <%= f.submit class: 'btn btn-primary' %>

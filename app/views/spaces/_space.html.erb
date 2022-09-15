@@ -1,6 +1,6 @@
 <%= link_to space_path(space), class:'block hover:opacity-80' do %>
   <div class="card lg:card-side bg-base-100 shadow-xl mb-5">
-    <figure></figure>
+    <figure><%= image_tag space.main_image, size: '400x225' %></figure>
     <div class="card-body">
       <h2 class="card-title"><%= space.name %></h2>
       <div class="flex gap-1 items-center">
