@@ -3,6 +3,11 @@
   SpaceType.create!(name: name)
 end
 
+# feature
+%w[Wi-Fi プロジェクター テレビ 電源・コンセント ホワイトボード トイレ 延長コード 冷蔵庫 喫煙所 駐車場].each do |name|
+  Feature.create!(name: name)
+end
+
 # space
 100.times.each do |n|
   # ランダムの緯度経度を作成
@@ -26,7 +31,8 @@ end
   #   画像をランダムで取得するようにする
   # end
 
-  # スペースの特徴についての処理
-  # スペースタイプを指定
+  # featureを指定
+  space.feature_ids = Feature.all.sample(3).pluck(:id)
+  # spacespace_typeを指定
   space.space_type_ids = SpaceType.all.sample(3).pluck(:id)
 end

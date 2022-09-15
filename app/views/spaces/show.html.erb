@@ -38,6 +38,9 @@
     </div>
 
     <div>
+      <% @space.features.each do |feature| %>
+        <div class="badge badge-outline"><%= feature.name %></div>
+      <% end %>
       <%# スペースの特徴をここに追加する %>
     </div>
   </div>

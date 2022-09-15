@@ -38,6 +38,7 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:name, :description, :address, :nearest_station, :longitude, :latitude)
+    params.require(:space).permit(:name, :description, :address, :nearest_station, { space_type_ids: [] },
+                                  { feature_ids: [] }, :longitude, :latitude)
   end
 end

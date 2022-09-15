@@ -6,7 +6,7 @@
 
   <div class="form-control w-full max-w-xs mb-5">
     <%= f.label :description, class: 'label' %>
-    <%= f.text_area :description, class: 'textarea textarea-bordered'%>
+    <%= f.text_area :description, class: 'textarea textarea-bordered w-full max-w-xs' %>
   </div>
 
   <div class="form-control w-full max-w-xs mb-5">
@@ -33,7 +33,16 @@
   </div>
 
   <%# features %>
-  <div>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :features, class: 'label' %>
+    <div class="flex flex-wrap gap-5">
+      <%= f.collection_check_boxes :feature_ids, Feature.all, :id, :name do |b| %>
+        <%= b.label class: 'label cursor-pointer justify-start gap-3' do %>
+          <%= b.check_box class: 'checkbox checkbox-primary' %>
+          <span class="label-text"><%= b.text %></span>
+        <% end %>
+      <% end %>
+    </div>  
   </div>
 
   <%# 緯度経度 %>

@@ -15,7 +15,9 @@
         <%# 別の入力フォーム？ %>
       </div>
       <div>
-        <%# featureを追加したら編集する %>
+        <% space.features.each do |feature| %>
+          <div class="badge badge-outline"><%= feature.name %></div>
+        <% end %>
       </div>
     </div>
   </div>
