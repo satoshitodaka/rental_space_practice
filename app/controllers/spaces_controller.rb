@@ -1,7 +1,7 @@
 class SpacesController < ApplicationController
   def index
     @q = Space.ransack(params[:q])
-    @spaces = @q.result(distinct: true)
+    @pagy, @spaces = pagy(@q.result.includes(:features).order(created_at: :desc))
   end
 
   def new
@@ -40,6 +40,6 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:name, :description, :address, :nearest_station, { space_type_ids: [] },
-                                  { feature_ids: [] }, :longitude, :latitude)
+                                  { feature_ids: [] }, :longitude, :latitude, { images: [] })
   end
 end

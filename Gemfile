@@ -47,6 +47,7 @@ gem 'bootsnap', require: false
 
 gem 'annotate'
 gem 'ransack'
+gem 'pagy'
 
 # Use Sass to process CSS
 # gem 'sassc-rails'
