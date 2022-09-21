@@ -51,10 +51,12 @@
       <% @space.features.each do |feature| %>
         <div class="badge badge-outline"><%= feature.name %></div>
       <% end %>
-      <%# スペースの特徴をここに追加する %>
     </div>
   </div>
-  <div>
-    <%# ここに地図情報を表示する。 %>
+  <div
+    data-controller="map"
+    data-map-latitude-value="<%= @space.latitude %>"
+    data-map-longitude-value="<%= @space.longitude %>"
+    class="h-[400px]">
   </div>
 </div>
