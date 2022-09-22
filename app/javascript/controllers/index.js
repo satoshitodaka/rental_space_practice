@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import SetLocationController from "./set_location_controller"
+application.register("set-location", SetLocationController)

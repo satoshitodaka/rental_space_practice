@@ -1,4 +1,4 @@
-<%= form_with model: space do |f| %>
+<%= form_with model: space, data: { controller: 'set-location' } do |f| %>
   <div class="form-control w-full max-w-xs mb-5">
     <%= f.label :name, class: 'label' %>
     <%= f.text_field :name, class: 'input input-bordered w-full max-w-xs'%>
@@ -46,21 +46,21 @@
   </div>
 
   <%# 緯度経度 %>
-  <div class="flex gap-5 w-full max-w-xs mb-5">
+  <div class="flex gap-5">
     <div class="form-control w-full max-w-xs mb-5">
       <%= f.label :latitude, class: 'label' %>
-      <%= f.text_field :latitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', read_only: true %> <%# ここで緯度のセットを実装 %>
+      <%= f.text_field :latitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', readonly: true, data: { set_location_target: 'latitude' } %>
     </div>
 
     <div class="form-control w-full max-w-xs mb-5">
       <%= f.label :longitude, class: 'label' %>
-      <%= f.text_field :longitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', read_only: true %> <%# ここで経度のセットを実装 %>
+      <%= f.text_field :longitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', readonly: true, data: { set_location_target: 'longitude' } %>
     </div>
   </div>
 
   <%# 地図を表示してピンを立てる %>
   <p>クリックしてピンを立ててください</p>
-  <div></div>
+  <div data-set-location-target="map" class="h-[500px] mb-5"></div>
 
   <%# 画像を選択する %>
   <div class="form-control w-full max-w-xs mb-5">
