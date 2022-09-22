@@ -6,7 +6,13 @@
     <% end %>
   </div>
   <h2><%= @space.name%></h2>
-  <%# ここに評価？を追記 %>
+    <div class="rating">
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" checked />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+    </div>
 
   <div class="flex flex-wrap gap-3">
     <% @space.space_types.each do |space_type| %>

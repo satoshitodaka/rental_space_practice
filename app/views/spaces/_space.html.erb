@@ -11,8 +11,12 @@
         <%# ここにsvgタグで何かする %>
         <%= space.nearest_station %>
       </div>
-      <div>
-        <%# 別の入力フォーム？ %>
+      <div class="rating">
+        <input type="radio" name="rating-<%= space.id %>" class="mask mask-star-2 bg-orange-400" />
+        <input type="radio" name="rating-<%= space.id %>" class="mask mask-star-2 bg-orange-400" checked />
+        <input type="radio" name="rating-<%= space.id %>" class="mask mask-star-2 bg-orange-400" />
+        <input type="radio" name="rating-<%= space.id %>" class="mask mask-star-2 bg-orange-400" />
+        <input type="radio" name="rating-<%= space.id %>" class="mask mask-star-2 bg-orange-400" />
       </div>
       <div>
         <% space.features.each do |feature| %>
