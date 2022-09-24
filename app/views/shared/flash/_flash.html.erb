@@ -1,0 +1,12 @@
+<div class="m-10">
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %> shadow-lg">
+      <div>
+        <%= render "shared/flash/icons/#{message_type}"%>
+        <span><%= message %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="alert-success alert-error alert-info alert-warning"></div>

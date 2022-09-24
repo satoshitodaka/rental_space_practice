@@ -1,0 +1,72 @@
+<div class="container mx-auto px-4 py-10 prose">
+  <div class="text-right">
+    <%= link_to edit_space_path(@space), class: 'btn btn-circle ctn-outline' do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+        <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+      </svg>
+    <% end %>
+  </div>
+  <h2><%= @space.name%></h2>
+    <div class="rating">
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" checked />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+      <input type="radio" name="rating-<%= @space.id %>" class="mask mask-star-2 bg-orange-400" />
+    </div>
+
+  <div class="flex flex-wrap gap-3">
+    <% @space.space_types.each do |space_type| %>
+      <span class="py-1 px-2 border-solid border block"><%= space_type.name %></span>
+    <% end %>
+  </div>
+
+  <div class="carousel w-full">
+    <% @space.images.each do |image| %>
+      <div id="<%= dom_id(image) %>" class="carousel-item w-full">
+        <%= image_tag image, class: 'w-full' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex justify-center w-full py-2 gap-2">
+    <% @space.images.each.with_index(1) do |image, index| %>
+      <a href="#<%= dom_id(image) %>" class="btn btn-xs"><%= index %></a>
+    <% end %>
+  </div>
+
+  <div>
+    <%= simple_format(@space.description)%>
+  </div>
+
+  <hr>
+  <div class="border-solid border p-5 mb-10">
+    <div class="flex gap-1 items-center mb-3">
+      住所
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+      </svg>
+      <%= @space.address %>
+    </div>
+    <div class="flex gap-1 items-center mb-3">
+      最寄駅
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd" />
+      </svg>
+      <%= @space.nearest_station %>
+    </div>
+
+    <div>
+      <% @space.features.each do |feature| %>
+        <div class="badge badge-outline"><%= feature.name %></div>
+      <% end %>
+    </div>
+  </div>
+  <div
+    data-controller="map"
+    data-map-latitude-value="<%= @space.latitude %>"
+    data-map-longitude-value="<%= @space.longitude %>"
+    class="h-[400px]">
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= search_form_for @q, url: spaces_path, class: 'flex justify-center gap-3' do |f| %>
+  <%= f.collection_select :space_types_id_eq, SpaceType.all, :id, :name, { include_blank: '会場タイプ' }, class: 'select select-bordered w-full max-w-xs' %>
+  <%= f.search_field :name_or_description_or_address_or_nearest_station_cont, class: 'input input-bordered w-full max-w-xs', placeholder: 'キーワード' %>
+  <%# モーダルのボタン %>
+  <label for="my-modal" class="btn modal-button">こだわり条件</label>
+
+  <input type="checkbox" id="my-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">こだわり条件</h3>
+      <%= f.collection_check_boxes :features_id_eq_any, Feature.all, :id, :name do |b| %>
+        <%= b.label class: 'label cursor-pointer justify-start gap-3' do %>
+        <%= b.check_box class: 'checkbox checkbox-primary' %>
+        <span class="label-text"><%= b.text %></span>
+        <% end %>
+      <% end %>
+      <div class="modal-action">
+        <label for="my-modal" class="btn">決定</label>
+      </div>
+    </div>
+  </div>
+  <%= f.submit class: 'btn btn-primary'%>
+<% end %>

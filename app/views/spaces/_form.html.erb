@@ -1,0 +1,75 @@
+<%= form_with model: space, data: { controller: 'set-location' } do |f| %>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :name, class: 'label' %>
+    <%= f.text_field :name, class: 'input input-bordered w-full max-w-xs'%>
+  </div>
+
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :description, class: 'label' %>
+    <%= f.text_area :description, class: 'textarea textarea-bordered w-full max-w-xs' %>
+  </div>
+
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :address, class: 'label' %>
+    <%= f.text_field :address, class: 'input input-bordered w-full max-w-xs'%>
+  </div>
+
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :nearest_station, class: 'label' %>
+    <%= f.text_field :nearest_station, class: 'input input-bordered w-full max-w-xs'%>
+  </div>
+  
+  <%# スペースタイプ %>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :space_types, class: 'label' %>
+    <div class="flex flex-wrap gap-5">
+      <%= f.collection_check_boxes :space_type_ids, SpaceType.all, :id, :name do |b| %>
+        <%= b.label class: 'label cursor-pointer justify-start gap-3' do %>
+          <%= b.check_box class: 'checkbox checkbox-primary' %>
+          <span class="label-text"><%= b.text %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# features %>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :features, class: 'label' %>
+    <div class="flex flex-wrap gap-5">
+      <%= f.collection_check_boxes :feature_ids, Feature.all, :id, :name do |b| %>
+        <%= b.label class: 'label cursor-pointer justify-start gap-3' do %>
+          <%= b.check_box class: 'checkbox checkbox-primary' %>
+          <span class="label-text"><%= b.text %></span>
+        <% end %>
+      <% end %>
+    </div>  
+  </div>
+
+  <%# 緯度経度 %>
+  <div class="flex gap-5">
+    <div class="form-control w-full max-w-xs mb-5">
+      <%= f.label :latitude, class: 'label' %>
+      <%= f.text_field :latitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', readonly: true, data: { set_location_target: 'latitude' } %>
+    </div>
+
+    <div class="form-control w-full max-w-xs mb-5">
+      <%= f.label :longitude, class: 'label' %>
+      <%= f.text_field :longitude, class: 'input input-bordered w-full max-w-xs bg-gray-100', readonly: true, data: { set_location_target: 'longitude' } %>
+    </div>
+  </div>
+
+  <%# 地図を表示してピンを立てる %>
+  <p>クリックしてピンを立ててください</p>
+  <div data-set-location-target="map" class="h-[500px] mb-5"></div>
+
+  <%# 画像を選択する %>
+  <div class="form-control w-full max-w-xs mb-5">
+    <%= f.label :images, class: 'label' %>
+    <%= f.file_field :images, class: '#', multiple: true %>
+  </div>
+
+  <%# 送信ボタン %>
+  <div class="mt-3">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
